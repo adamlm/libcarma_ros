@@ -24,5 +24,15 @@ TEST(Angle, ToRosMsg)
   using units::literals::operator""_deg;
 
   const carma::sae_j2735::Angle angle{10_deg};
-  const auto result = carma::sae_j2735_ros::to_ros_msg<j2735_v2x_msgs::msg::Angle>(angle);
+  const auto msg{carma::sae_j2735_ros::to_ros_msg<j2735_v2x_msgs::msg::Angle>(angle)};
+
+  EXPECT_DOUBLE_EQ(units::unit_cast<double>(angle.value()), msg.angle);
+}
+
+TEST(Angle, FromRosMsg)
+{
+  j2735_v2x_msgs::msg::Angle msg;
+  msg.angle = 13.4;
+
+  const auto angle{carma::sae_j2735_ros::from_ros_msg<carma::sae_j2735::Angle>(msg)};
 }

@@ -20,6 +20,16 @@ include(get_cpm)
 # Tell CPM to search for locally-installed packages before using the source
 set(CPM_USE_LOCAL_PACKAGES TRUE)
 
+CPMAddPackage(NAME units
+  GITHUB_REPOSITORY nholthaus/units
+  GIT_TAG v2.3.3
+  SYSTEM TRUE
+  EXCLUDE_FROM_ALL TRUE
+  OPTIONS
+    "BUILD_TESTS OFF"
+    "BUILD_DOCS OFF"
+)
+
 CPMAddPackage(NAME libcarma
   GITHUB_REPOSITORY adamlm/libcarma
   GIT_TAG main

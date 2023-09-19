@@ -72,4 +72,4 @@ if(libcarma_sae_j2735_ros_BUILD_TESTS)
   gtest_discover_tests(libcarma_sae_j2735_ros_tests)
 endif()
 
-ament_auto_package()
+ament_package()
